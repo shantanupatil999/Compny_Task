@@ -1,0 +1,71 @@
+﻿@model Compny_Task.Models.Employee_model
+
+@using (Html.BeginForm("SaveorUpdate", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <lable>Emp_Cod</lable>
+                @Html.HiddenFor(m => m.ID)
+                @Html.TextBoxFor(m => m.EmpNO, new { @class = "form-control ", id = "Genrate_Code" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <lable>Employee Name</lable>
+                @Html.TextBoxFor(m => m.EmpName, new { @class = "form-control " })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <lable>Phone No</lable>
+                @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control " })
+                @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger  " })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <lable>Salary</lable>
+                @Html.TextBoxFor(m => m.Salary, new { @class = "form-control " })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <lable>DOB</lable>
+                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control ", Type = "date" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <lable>Email</lable>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control " })
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label class="small mb-1 ">Emp_Photo <small style="color:red">*</small></label>
+                <input type="file" name="Imagefile" required class="btn btn-default" tabindex="4" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Qulification</label>
+                @Html.DropDownListFor(m => m.Qualification, new List<SelectListItem>
+           {
+               new SelectListItem{Text="---Select",Value="0"},
+               new SelectListItem{Text="BE",Value="BE"},
+                new SelectListItem{Text="MCA",Value="MCA"},
+                 new SelectListItem{Text="BTech",Value="BTech"},
+                  new SelectListItem{Text="BBA",Value="BBA"}
+           }
+           , new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-danger"> Save Record </button>
+
+}
+
+
+
